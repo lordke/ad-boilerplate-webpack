@@ -46,7 +46,9 @@
     {{#router}}
     "vue-router": "3.0.1",
     {{/router}}
+    {{#vuex}}
     "vuex": "3.0.1",
+    {{/vuex}}
     {{#warm}},
     "warm-ui": "^1.3.3",
     {{/warm}}

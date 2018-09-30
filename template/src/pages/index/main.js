@@ -17,7 +17,9 @@ Vue.use(wbui)
 import router from '@router/index' 
 {{/router}}
 import 'normalize.css'
+{{#vuex}}
 import store from '@state/store'
+{{/vuex}}
 // 自动注册所有component到Vue上
 import '@components/_globals'
 {{#mobile}}
@@ -34,7 +36,9 @@ new Vue({
   {{router}}
   router,
   {{/router}}
+  {{#vuex}}
   store,
+  {{/vuex}}
   {{#if_eq build "runtime"}}
   render: h => h(App),
   {{/if_eq}}
