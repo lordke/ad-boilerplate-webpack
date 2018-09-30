@@ -19,14 +19,18 @@ const aliases = {
 
 module.exports = {
   webpack: {},
+  {{#unit}}
   jest: {},
+  {{/unit}}
   jsconfig: {},
 }
 
 for (const alias in aliases) {
   const aliasTo = aliases[alias]
   module.exports.webpack[alias] = resolveSrc(aliasTo)
+  {{#unit}}
   module.exports.jest['^' + alias + '/(.*)$'] = '<rootDir>/' + aliasTo + '/$1'
+  {{/unit}}
   module.exports.jsconfig[alias + '/*'] = [aliasTo + '/*']
   module.exports.jsconfig[alias] = aliasTo.includes('/index.')
     ? [aliasTo]

@@ -27,6 +27,14 @@ module.exports = {
 
       return options.inverse(this)
     },
+    if_and(v1, v2, options) {
+
+      if (v1 && v2) {
+        return options.fn(this)
+      }
+
+      return options.inverse(this)
+    },
     template_version() {
       return templateVersion
     },
@@ -126,28 +134,28 @@ module.exports = {
       type: 'confirm',
       message: '（ 想要使用单元测试吗？）Set up unit tests',
     },
-    runner: {
-      when: 'isNotTest && unit',
-      type: 'list',
-      message: '（ 选择一个单元测试runtime ）Pick a test runner',
-      choices: [
-        {
-          name: 'Jest',
-          value: 'jest',
-          short: 'jest',
-        },
-        {
-          name: 'Karma and Mocha',
-          value: 'karma',
-          short: 'karma',
-        },
-        {
-          name: 'none (configure it yourself)',
-          value: 'noTest',
-          short: 'noTest',
-        },
-      ],
-    },
+    // runner: {
+    //   when: 'isNotTest && unit',
+    //   type: 'list',
+    //   message: '（ 选择一个单元测试runtime ）Pick a test runner',
+    //   choices: [
+    //     {
+    //       name: 'Jest',
+    //       value: 'jest',
+    //       short: 'jest',
+    //     },
+    //     {
+    //       name: 'Karma and Mocha',
+    //       value: 'karma',
+    //       short: 'karma',
+    //     },
+    //     {
+    //       name: 'none (configure it yourself)',
+    //       value: 'noTest',
+    //       short: 'noTest',
+    //     },
+    //   ],
+    // },
     e2e: {
       when: 'isNotTest',
       type: 'confirm',
@@ -185,15 +193,17 @@ module.exports = {
     '.prettierignore': 'lint',
     '.prettierrc.js': 'lint',
     'lint-staged.config.js': 'lint',
-    'config/test.env.js': 'unit || e2e',
-    'build/webpack.test.conf.js': "unit && runner === 'karma'",
-    'test/unit/**/*': 'unit',
-    'test/unit/index.js': "unit && runner === 'karma'",
-    'test/unit/jest.conf.js': "unit && runner === 'jest'",
-    'test/unit/karma.conf.js': "unit && runner === 'karma'",
-    'test/unit/specs/index.js': "unit && runner === 'karma'",
-    'test/unit/setup.js': "unit && runner === 'jest'",
-    'test/e2e/**/*': 'e2e',
+    // 'config/test.env.js': 'unit || e2e',
+    // 'build/webpack.test.conf.js': "unit && runner === 'karma'",
+    'tests/unit/**/*': 'unit',
+    'jest.config.js': 'unit',
+    
+    // 'test/unit/index.js': "unit && runner === 'karma'",
+    // 'test/unit/jest.conf.js': "unit && runner === 'jest'",
+    // 'test/unit/karma.conf.js': "unit && runner === 'karma'",
+    // 'test/unit/specs/index.js': "unit && runner === 'karma'",
+    // 'test/unit/setup.js': "unit && runner === 'jest'",
+    // 'test/e2e/**/*': 'e2e',
     'src/router/**/*': 'router',
     'src/state/**/*': 'vuex'
   },

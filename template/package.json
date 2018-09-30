@@ -11,10 +11,14 @@
     {{#lint}}
     "lint": "eslint --ext .js,.vue --fix . && stylelint --fix \"src/**/*.vue\" \"src/**/*.scss\" && markdownlint docs/*.md *.md && prettier --list-different --write \"**/*.{js,json,css,scss,vue,md}\"",
     {{/lint}}
+    {{#unit}}
     "unit": "vue-cli-service test:unit",
     "unit:watch": "npm run unit --watch --notify --notifyMode change",
+    {{/unit}}
     "e2e": "vue-cli-service test:e2e --headless",
+    {{#if_and unit e2e}}
     "test": "npm run unit && npm run e2e",
+    {{/if_and}}
     {{#lint}}
     "test:ci": "npm run lint && vue-cli-service test:unit --coverage --ci && npm run e2e",
     {{/lint}}
@@ -70,15 +74,22 @@
     {{#lint}}
     "@vue/cli-plugin-eslint": "3.0.x",
     {{/lint}}
+    {{#unit}}
     "@vue/cli-plugin-unit-jest": "^3.0.3",
+    {{/unit}}
     "@vue/cli-service": "^3.0.3",
     {{#lint}}
     "@vue/eslint-config-prettier": "3.0.x",
     "@vue/eslint-config-standard": "3.0.x",
     {{/lint}}
+    {{#unless lint}}
+    "prettier": "^1.12.1"
+    {{/unless}}
     "@vue/test-utils": "^1.0.0-beta.20",
     "babel-core": "7.0.0-bridge.0",
+    {{#unit}}
     "babel-jest": "^23.4.2",
+    {{/unit}}
     "babel-loader": "8.0.0",
     "cross-env": "5.2.x",
     {{#lint}}
@@ -87,7 +98,6 @@
     "express": "4.16.x",
     "hygen": "1.6.x",
     "imagemin-lint-staged": "0.3.x",
-    "jest-css-modules": "^1.1.0",
     {{#lint}}
     "lint-staged": "7.2.x",
     "markdownlint-cli": "0.13.x",
