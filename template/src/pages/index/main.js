@@ -13,8 +13,9 @@ import * as wbui from 'wbui-m' //整体引入
 import 'wbui-m/lib/styles/theme-default/index.css' //引入样式文件
 Vue.use(wbui)
 {{/wbui}}
-
+{{#router}}
 import router from '@router/index' 
+{{/router}}
 import 'normalize.css'
 import store from '@state/store'
 // 自动注册所有component到Vue上
@@ -30,7 +31,9 @@ Vue.config.productionTip = false
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
+  {{router}}
   router,
+  {{/router}}
   store,
   {{#if_eq build "runtime"}}
   render: h => h(App),
