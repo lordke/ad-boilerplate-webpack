@@ -2,16 +2,28 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import App from '@modules/index/App'
-// import WUI from 'warm-ui/libs/warm' // 引入组件库
-import router from '@router/index' // 引入样式库
+
+{{#warm}}
+import WUI from 'warm-ui/libs/warm' // 引入组件库
+import '../../../node_modules/warm-ui/libs/warm.css' // 引入样式库
+Vue.use(WUI)
+{{/warm}}
+{{#wbui}}
+import * as wbui from 'wbui-m' //整体引入
+import 'wbui-m/lib/styles/theme-default/index.css' //引入样式文件
+Vue.use(wbui)
+{{/wbui}}
+
+import router from '@router/index' 
 import 'normalize.css'
 import store from '@state/store'
 // 自动注册所有component到Vue上
 import '@components/_globals'
+{{#mobile}}
 import FastClick from 'fastclick'
 
 FastClick.attach(document.body)
-// Vue.use(WUI)
+{{/mobile}}
 
 Vue.config.productionTip = false
 
