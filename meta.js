@@ -180,6 +180,11 @@ module.exports = {
   filters: {
     '.eslintrc.js': 'lint',
     '.eslintignore': 'lint',
+    '.markdownlintrc': 'lint',
+    'stylelint.config.js': 'lint',
+    '.prettierignore': 'lint',
+    '.prettierrc.js': 'lint',
+    'lint-staged.config.js': 'lint',
     'config/test.env.js': 'unit || e2e',
     'build/webpack.test.conf.js': "unit && runner === 'karma'",
     'test/unit/**/*': 'unit',
