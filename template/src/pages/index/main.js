@@ -9,8 +9,8 @@ import '../../../node_modules/warm-ui/libs/warm.css' // 引入样式库
 Vue.use(WUI)
 {{/warm}}
 {{#wbui}}
-import * as wbui from 'wbui-m' //整体引入
-import 'wbui-m/lib/styles/theme-default/index.css' //引入样式文件
+import * as wbui from 'wbui-m' // 整体引入
+import 'wbui-m/lib/styles/theme-default/index.css' // 引入样式文件
 Vue.use(wbui)
 {{/wbui}}
 {{#router}}
