@@ -159,7 +159,7 @@ module.exports = {
     e2e: {
       when: 'isNotTest',
       type: 'confirm',
-      message: 'Setup e2e tests with Nightwatch?',
+      message: 'Setup e2e tests with cypress?',
     },
     autoInstall: {
       when: 'isNotTest',
@@ -197,7 +197,8 @@ module.exports = {
     // 'build/webpack.test.conf.js': "unit && runner === 'karma'",
     'tests/unit/**/*': 'unit',
     'jest.config.js': 'unit',
-    
+    'cypress.json': 'e2e',
+    'tests/e2e/**/*': 'e2e',
     // 'test/unit/index.js': "unit && runner === 'karma'",
     // 'test/unit/jest.conf.js': "unit && runner === 'jest'",
     // 'test/unit/karma.conf.js': "unit && runner === 'karma'",

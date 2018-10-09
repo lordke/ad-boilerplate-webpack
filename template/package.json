@@ -5,7 +5,9 @@
   "private": true,
   "scripts": {
     "dev": "vue-cli-service serve",
+    {{#e2e}}
     "dev:e2e": "vue-cli-service test:e2e --mode=development",
+    {{/e2e}}
     "build": "vue-cli-service build",
     "build:ci": "vue-cli-service build --report",
     {{#lint}}
@@ -15,7 +17,9 @@
     "unit": "vue-cli-service test:unit",
     "unit:watch": "npm run unit --watch --notify --notifyMode change",
     {{/unit}}
+    {{#e2e}}
     "e2e": "vue-cli-service test:e2e --headless",
+    {{/e2e}}
     {{#if_and unit e2e}}
     "test": "npm run unit && npm run e2e",
     {{/if_and}}
@@ -70,7 +74,9 @@
   "devDependencies": {
     "@babel/core": "7.0.0",
     "@vue/cli-plugin-babel": "^3.0.3",
+    {{#e2e}}
     "@vue/cli-plugin-e2e-cypress": "3.0.x",
+    {{/e2e}}
     {{#lint}}
     "@vue/cli-plugin-eslint": "3.0.x",
     {{/lint}}
