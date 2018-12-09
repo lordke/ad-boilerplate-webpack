@@ -3,15 +3,17 @@
 // as the camelCase equivalent of their file name.
 import camelCase from 'lodash/camelCase'
 
-interface root {
+interface rootInterface {
+  //eslint-disable-next-line
+  // prettier-ignore
   [key: string]: any;
   modules: {
-    [key: string]: any;
+    [key: string]: any
   }
 }
 
 interface modules {
-  [key: string]: any;
+  [key: string]: any
 }
 // https://webpack.js.org/guides/dependency-management/#require-context
 const requireModule = require.context(
@@ -22,7 +24,7 @@ const requireModule = require.context(
   // Include any .js files that are not unit tests
   /^((?!\.unit\.).)*\.js$/
 )
-const root: root = { modules: {} }
+const root: rootInterface = { modules: {} }
 
 requireModule.keys().forEach(fileName => {
   // Skip this file, as it's not a module
@@ -50,7 +52,7 @@ requireModule.keys().forEach(fileName => {
   }
 
   // Recursively get the namespace of the module, even if nested
-  function getNamespace(subtree: root, path: Array<string>):root {
+  function getNamespace(subtree: rootInterface, path: Array<string>): rootInterface {
     if (path.length === 1) return subtree
 
     const namespace = path.shift() || ''

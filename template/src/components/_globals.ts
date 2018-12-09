@@ -26,7 +26,7 @@ requireComponent.keys().forEach(fileName => {
     camelCase(
       fileName
         .split('/')
-        [fileName.split('/').length - 1]// Remove the "./_" from the beginning
+        [fileName.split('/').length - 1] // Remove the "./_" from the beginning
         // .replace(/^\.\/_/, '')
         // Remove the file extension from the end
         .replace(/\.\w+$/, '')
