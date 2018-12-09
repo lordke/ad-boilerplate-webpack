@@ -82,21 +82,21 @@ module.exports = {
       type: 'confirm',
       message: '您的项目是移动端项目吗?（ 将使用VW配置移动端分辨率适配？）',
     },
-    wbui: {
-      when: 'isNotTest && mobile',
-      type: 'confirm',
-      message: '是否使用移动端组件库（ wbui-m ）'
-    },
-    warm: {
-      when: 'isNotTest && !mobile',
-      type: 'confirm',
-      message: '是否使用组件库（ warm ）'
-    },
     typescript: {
       when: 'isNotTest',
       type: 'confirm',
       message: '是否使用typeScript',
       default: true
+    },
+    wbui: {
+      when: 'isNotTest && mobile && !typescript',
+      type: 'confirm',
+      message: '是否使用移动端组件库（ wbui-m ）'
+    },
+    warm: {
+      when: 'isNotTest && !mobile && !typescript',
+      type: 'confirm',
+      message: '是否使用组件库（ warm ）'
     },
     router: {
       when: 'isNotTest',
