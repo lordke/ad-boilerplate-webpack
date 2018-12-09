@@ -52,7 +52,10 @@ requireModule.keys().forEach(fileName => {
   }
 
   // Recursively get the namespace of the module, even if nested
-  function getNamespace(subtree: rootInterface, path: Array<string>): rootInterface {
+  function getNamespace(
+    subtree: rootInterface,
+    path: Array<string>
+  ): rootInterface {
     if (path.length === 1) return subtree
 
     const namespace = path.shift() || ''
