@@ -92,6 +92,12 @@ module.exports = {
       type: 'confirm',
       message: '是否使用组件库（ warm ）'
     },
+    typescript: {
+      when: 'isNotTest',
+      type: 'confirm',
+      message: '是否使用typeScript',
+      default: true
+    },
     router: {
       when: 'isNotTest',
       type: 'confirm',
@@ -193,6 +199,10 @@ module.exports = {
     '.prettierignore': 'lint',
     '.prettierrc.js': 'lint',
     'lint-staged.config.js': 'lint',
+    'tsconfig.json': 'typescript',
+    'src/**/*.ts': 'typescript',
+    'src/utills/*': '!typescript',
+    'src/**/*.js': '!typescript',
     // 'config/test.env.js': 'unit || e2e',
     // 'build/webpack.test.conf.js': "unit && runner === 'karma'",
     'tests/unit/**/*': 'unit',

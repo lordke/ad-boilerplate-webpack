@@ -5,7 +5,7 @@
     </h1>
   </div>
 </template>
-
+{{#unless typescript}}
 <script>
 export default {
   name: 'HelloWorld',
@@ -15,6 +15,16 @@ export default {
     }
   }
 }
+{{/unless}}
+{{#typescript}}
+<script lang="ts">
+import { Component, Vue } from 'vue-property-decorator';
+
+@Component
+export default class HelloWorld extends Vue {
+  msg: string = '欢迎使用Vuejs多页模板'
+}
+{{/typescript}}
 </script>
 
 <style module>

@@ -3,9 +3,15 @@ const path = require('path')
 const glob = require('glob')
 const manifestPlugin = require('webpack-manifest-plugin')
 let pages = {}
+{{#typescript}}
+glob.sync(path.join(__dirname, '/src/pages/*/*.ts')).forEach(entry => {
+  // console.log(glob.sync(path.dirname(entry) + '/*.html')[0])
+  pages[path.basename(entry, '.ts')] = {
+{{else}}
 glob.sync(path.join(__dirname, '/src/pages/*/*.js')).forEach(entry => {
   // console.log(glob.sync(path.dirname(entry) + '/*.html')[0])
   pages[path.basename(entry, '.js')] = {
+{{/typescript}}
     // page 的入口
     entry,
     // 模板来源

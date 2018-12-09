@@ -3,8 +3,15 @@ module.exports = {
   parserOptions: {
     sourceType: 'script',
     ecmaVersion: 6,
+    {{#unless typescript}}
     parser: 'babel-eslint',
+    {{/unless}}
+    {{#typescript}}
+    parser: 'typescript-eslint-parser',
+    {{/typescript}}
+
   },
+  {{#unless typescript}}
   extends: [
     // https://github.com/vuejs/eslint-plugin-vue#bulb-rules
     'plugin:vue/recommended',
@@ -14,6 +21,14 @@ module.exports = {
     'prettier',
     'prettier/standard',
   ],
+  {{/unless}}
+  {{#typescript}}
+  'extends': [
+    'plugin:vue/essential',
+    '@vue/prettier',
+    '@vue/typescript'
+  ],
+  {{/typescript}}
   rules: {
     // Only allow debugger in development
     'no-debugger': process.env.PRE_COMMIT ? 'error' : 'off',
@@ -21,26 +36,10 @@ module.exports = {
     'no-console': process.env.PRE_COMMIT
       ? ['error', { allow: ['warn', 'error'] }]
       : 'off',
-    /*     'vue/component-name-in-template-casing': [
-      'error',
-      'PascalCase',
-      {
-        ignores: [
-          'component',
-          'template',
-          'transition',
-          'transition-group',
-          'keep-alive',
-          'slot',
-          'router-view',
-          'router-link',
-        ],
-      },
-    ], */
     'vue/multiline-html-element-content-newline': 'error',
     'vue/singleline-html-element-content-newline': 'error',
     'vue/no-spaces-around-equal-signs-in-attribute': 'error',
-    'vue/script-indent': ['error', 2, { baseIndent: 0 }],
+    'vue/script-indent': ['error', 2, { baseIndent: 0, switchCase: 1 }],
   },
   globals: {
     $config: false,

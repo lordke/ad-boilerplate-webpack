@@ -69,6 +69,10 @@
     {{#wbui}}
     "wbui-m": "^0.1.26",
     {{/wbui}}
+    {{#typescript}}
+    "vue-class-component": "^6.0.0",
+    "vue-property-decorator": "^7.0.0",
+    {{/typescript}}
     "lodash": "4.17.10"
   },
   "devDependencies": {
@@ -120,6 +124,15 @@
     "stylelint-config-standard": "18.2.x",
     "stylelint-scss": "3.3.x",
     {{/lint}}
+    {{#typescript}}
+    "typescript": "^3.0.0",
+    "@vue/cli-plugin-typescript": "^3.2.0",
+    "@vue/eslint-config-typescript": "^3.2.0",
+    {{/typescript}}
+    {{#if_and typescript unit}}
+    "ts-jest": "^23.0.0",
+    "@types/jest": "^23.1.4",
+    {{/if_and}}
     "vue-template-compiler": "2.5.17",
     "vuepress": "0.14.x",
     "webpack-manifest-plugin": "^2.0.4"

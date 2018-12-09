@@ -10,10 +10,21 @@ module.exports = {
   globalTeardown: '<rootDir>/tests/unit/global-teardown',
   setupTestFrameworkScriptFile: '<rootDir>/tests/unit/matchers',
   testMatch: ['**/(*.)unit.js'],
-  moduleFileExtensions: ['js', 'json', 'vue'],
+  moduleFileExtensions: [
+    'js',
+    'json',
+    'vue',
+    {{#typescript}}
+    'ts',
+    'tsx'
+    {{/typescript}}
+  ],
   transform: {
     '^.+\\.vue$': 'vue-jest',
     '^.+\\.js$': 'babel-jest',
+    {{#typescript}}
+    '^.+\\.tsx?$': 'ts-jest'
+    {{/typescript}}
   },
   moduleNameMapper: {
     // Transform any static assets to empty strings
