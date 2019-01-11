@@ -58,7 +58,7 @@
     {{/mobile}}
     "vue": "2.5.17",
     {{#router}}
-    "vue-router": "3.0.1",
+    "vue-router": "3.0.2",
     {{/router}}
     {{#vuex}}
     "vuex": "3.0.1",
