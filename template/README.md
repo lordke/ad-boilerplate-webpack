@@ -52,11 +52,11 @@ npm new page(...component, module)
 
 ```bash
 # 生成新页面
-npm new page
+npm run new page
 # 生成新组件
-npm new componennt
+npm run new componennt
 # 生成新module
-npm new module
+npm run new module
 ```
 
 - 移动端适配
