@@ -5,13 +5,21 @@
   "description": "A full-featured Webpack setup with hot-reload, lint-on-save, unit testing & css extraction.",
   "scripts": {
     "docs": "cd docs && gitbook serve",
-    "docs:deploy": "bash ./deploy-docs.sh"
+    "docs:deploy": "bash ./deploy-docs.sh",
+    "commit": "git-cz"
   },
   "devDependencies": {
     "vue-cli": "^2.8.1",
-    "vuepress": "^0.14.8"
+    "vuepress": "^0.14.8",
+    "commitizen": "^3.1.1",
+    "cz-conventional-changelog": "^2.0.0"
   },
   "dependencies": {
     "webpack-serve": "^2.0.3"
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
   }
 }
