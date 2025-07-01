@@ -1,22 +1,22 @@
 // The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
-import Vue from 'vue'
+import { createApp } from 'vue'
 import App from '@modules/index/App.vue'
 
 {{#warm}}
-import WUI from 'warm-ui/libs/warm' // 引入组件库
-import '../../../node_modules/warm-ui/libs/warm.css' // 引入样式库
+import ElementPlus from 'element-plus'
+import 'element-plus/dist/index.css'
 {{/warm}}
 {{#wbui}}
-import * as wbui from 'wbui-m' // 整体引入
-import 'wbui-m/lib/styles/theme-default/index.css' // 引入样式文件
+import Vant from 'vant'
+import 'vant/lib/index.css'
 {{/wbui}}
 {{#router}}
 import router from '@router/index'
 {{/router}}
 import 'normalize.css'
 {{#vuex}}
-import store from '@state/store'
+import { createPinia } from 'pinia'
 {{/vuex}}
 // 自动注册所有component到Vue上
 import '@components/_globals'
@@ -25,29 +25,20 @@ import FastClick from 'fastclick'
 
 FastClick.attach(document.body)
 {{/mobile}}
+
+const app = createApp(App)
+
 {{#warm}}
-Vue.use(WUI)
+app.use(ElementPlus)
 {{/warm}}
 {{#wbui}}
-Vue.use(wbui)
+app.use(Vant)
 {{/wbui}}
+{{#router}}
+app.use(router)
+{{/router}}
+{{#vuex}}
+app.use(createPinia())
+{{/vuex}}
 
-Vue.config.productionTip = false
-
-/* eslint-disable no-new */
-new Vue({
-  el: '#app',
-  {{#router}}
-  router,
-  {{/router}}
-  {{#vuex}}
-  store,
-  {{/vuex}}
-  {{#if_eq build "runtime"}}
-  render: h => h(App),
-  {{/if_eq}}
-  {{#if_eq build "standalone"}}
-  components: { App },
-  template: '<App/>',
-  {{/if_eq}}
-})
+app.mount('#app')

@@ -1,10 +1,8 @@
-import Vue from 'vue'
-import Router from 'vue-router'
+import { createRouter, createWebHistory } from 'vue-router'
 import HelloWorld from '@components/index/HelloWorld.vue'
 
-Vue.use(Router)
-
-let router = new Router({
+const router = createRouter({
+  history: createWebHistory(),
   routes: [
     {
       path: '/',

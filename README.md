@@ -1,10 +1,9 @@
-
 ## 用法
 
-这是一个Vue-cli模板 (https://github.com/vuejs/vue-cli). **It is recommended to use npm 3+ for a more efficient dependency tree.**
+这是一个Vue-cli模板 (https://github.com/vuejs/vue-cli). **建议使用 npm 16+ 以获得更好的依赖管理体验。**
 
 ``` bash
-$ npm install -g vue-cli
+$ npm install -g @vue/cli
 $ vue init lordke/webpack my-project
 $ cd my-project
 $ npm install
@@ -46,12 +45,13 @@ npm test
 ### 代码分离
 
 * 页面资源JS
-* Vue、Vue-router、Vuex等第三方依赖Vendor包
+* Vue、Vue-router、Pinia等第三方依赖Vendor包
 * webpack runtime
 
 ### 组件库
-本项目默认导入 warm-ui 组件库
-详情请点击 http://uxd.biz.weibo.com/warm/
+本项目支持以下组件库：
+- PC端：Element Plus (http://element-plus.org/)
+- 移动端：Vant 4 (https://vant-contrib.gitee.io/vant/)
 
 ### 移动端适配
 
@@ -71,57 +71,57 @@ npm test
 ```  
 
 
-# vue-webpack-boilerplate
+# vue3-webpack-boilerplate
 
-> A full-featured Webpack setup with hot-reload, lint-on-save, unit testing & css extraction.
+> 一个基于Vue 3的完整Webpack配置，包含热重载、保存时代码检查、单元测试和CSS提取等功能。
 
-> This template is Vue 2.0 compatible. For Vue 1.x use this command: `vue init webpack#1.0 my-project`
+> 此模板兼容Vue 3.x。
 
-## Documentation
+## 文档
 
-- [For this template](http://vuejs-templates.github.io/webpack): common questions specific to this template are answered and each part is described in greater detail
-- [For Vue 2.0](http://vuejs.org/guide/): general information about how to work with Vue, not specific to this template
+- [模板文档](http://vuejs-templates.github.io/webpack): 针对此模板的常见问题和详细说明
+- [Vue 3.x文档](http://vuejs.org/guide/): Vue的通用信息，不特定于此模板
 
 
-This will scaffold the project using the `master` branch. If you wish to use the latest version of the webpack template, do the following instead:
+使用此命令将使用 `master` 分支创建项目。如果你希望使用最新版本的webpack模板，请使用以下命令：
 
 ``` bash
 $ vue init webpack#develop my-project
 ```
 
-:warning: **The develop branch is not considered stable and can contain bugs or not build at all, so use at your own risk.**
+:warning: **develop分支不被认为是稳定的，可能包含错误或根本无法构建，使用时请自担风险。**
 
-The development server will run on port 8080 by default. If that port is already in use on your machine, the next free port will be used.
+开发服务器默认运行在8080端口。如果该端口已被占用，将使用下一个可用端口。
 
-## What's Included
+## 包含的功能
 
-- `npm run dev`: first-in-class development experience.
-  - Webpack + `vue-loader` for single file Vue components.
-  - State preserving hot-reload
-  - State preserving compilation error overlay
-  - Lint-on-save with ESLint
-  - Source maps
+- `npm run dev`: 一流的开发体验。
+  - Webpack + `vue-loader` 用于单文件Vue组件。
+  - 状态保持的热重载
+  - 状态保持的编译错误覆盖
+  - 使用ESLint保存时检查
+  - 源码映射
 
-- `npm run build`: Production ready build.
-  - JavaScript minified with [UglifyJS v3](https://github.com/mishoo/UglifyJS2/tree/harmony).
-  - HTML minified with [html-minifier](https://github.com/kangax/html-minifier).
-  - CSS across all components extracted into a single file and minified with [cssnano](https://github.com/ben-eb/cssnano).
-  - Static assets compiled with version hashes for efficient long-term caching, and an auto-generated production `index.html` with proper URLs to these generated assets.
-  - Use `npm run build --report`to build with bundle size analytics.
+- `npm run build`: 生产就绪的构建。
+  - 使用[UglifyJS v3](https://github.com/mishoo/UglifyJS2/tree/harmony)压缩JavaScript。
+  - 使用[html-minifier](https://github.com/kangax/html-minifier)压缩HTML。
+  - 所有组件的CSS提取到单个文件中，并使用[cssnano](https://github.com/ben-eb/cssnano)压缩。
+  - 静态资源编译时带有版本哈希，用于高效的长期缓存，并自动生成生产环境的`index.html`，包含正确的资源URL。
+  - 使用 `npm run build --report` 构建并查看包大小分析报告。
 
-- `npm run unit`: Unit tests run in [JSDOM](https://github.com/tmpvar/jsdom) with [Jest](https://facebook.github.io/jest/), or in PhantomJS with Karma + Mocha + karma-webpack.
-  - Supports ES2015+ in test files.
-  - Easy mocking.
+- `npm run unit`: 在[JSDOM](https://github.com/tmpvar/jsdom)中使用[Jest](https://facebook.github.io/jest/)运行单元测试。
+  - 支持测试文件中的ES2015+。
+  - 简单的模拟。
 
-- `npm run e2e`: End-to-end tests with [Nightwatch](http://nightwatchjs.org/).
-  - Run tests in multiple browsers in parallel.
-  - Works with one command out of the box:
-    - Selenium and chromedriver dependencies automatically handled.
-    - Automatically spawns the Selenium server.
+- `npm run e2e`: 使用[Nightwatch](http://nightwatchjs.org/)进行端到端测试。
+  - 在多个浏览器中并行运行测试。
+  - 开箱即用：
+    - 自动处理Selenium和chromedriver依赖。
+    - 自动启动Selenium服务器。
 
-### Fork It And Make Your Own
+### Fork并创建你自己的模板
 
-You can fork this repo to create your own boilerplate, and use it with `vue-cli`:
+你可以fork这个仓库来创建你自己的样板，并与`vue-cli`一起使用：
 
 ``` bash
 vue init username/repo my-project

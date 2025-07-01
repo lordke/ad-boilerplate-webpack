@@ -52,31 +52,13 @@ module.exports = {
       type: 'string',
       required: false,
       message: '项目描述(Project description)',
-      default: 'A Vue.js project',
+      default: 'A Vue.js 3 project',
     },
     // author: {
     //   when: 'isNotTest',
     //   type: 'string',
     //   message: 'Author',
     // },
-    build: {
-      when: 'isNotTest',
-      type: 'list',
-      message: 'Vue build（请选择Vue的版本）',
-      choices: [
-        {
-          name: 'Runtime + Compiler: recommended for most users（ 运行时加模板编译 ）',
-          value: 'standalone',
-          short: 'standalone',
-        },
-        {
-          name:
-            'Runtime-only: about 6KB lighter min+gzip,（不包含模板编译功能，只能在 .vue 文件中使用template）',
-          value: 'runtime',
-          short: 'runtime',
-        },
-      ],
-    },
     mobile: {
       when: 'isNotTest',
       type: 'confirm',
@@ -85,18 +67,18 @@ module.exports = {
     typescript: {
       when: 'isNotTest',
       type: 'confirm',
-      message: '是否使用typeScript',
+      message: '是否使用TypeScript',
       default: true
     },
     wbui: {
       when: 'isNotTest && mobile && !typescript',
       type: 'confirm',
-      message: '是否使用移动端组件库（ wbui-m ）'
+      message: '是否使用移动端组件库（ Vant 4 ）'
     },
     warm: {
       when: 'isNotTest && !mobile && !typescript',
       type: 'confirm',
-      message: '是否使用组件库（ warm ）'
+      message: '是否使用组件库（ Element Plus ）'
     },
     router: {
       when: 'isNotTest',
@@ -106,7 +88,7 @@ module.exports = {
     vuex: {
       when: 'isNotTest',
       type: 'confirm',
-      message: 'Install vuex?（ 使用vuex管理你的数据吗）',
+      message: 'Install Pinia?（ 使用Pinia管理你的数据吗）',
     },
     lint: {
       when: 'isNotTest',

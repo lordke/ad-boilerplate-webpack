@@ -1,7 +1,7 @@
 // const appConfig = require('./src/app.config')
 const path = require('path')
 const glob = require('glob')
-const manifestPlugin = require('webpack-manifest-plugin')
+const { WebpackManifestPlugin } = require('webpack-manifest-plugin')
 let pages = {}
 {{#typescript}}
 glob.sync(path.join(__dirname, '/src/pages/*/*.ts')).forEach(entry => {
@@ -27,9 +27,6 @@ glob.sync(path.join(__dirname, '/src/pages/*/*.js')).forEach(entry => {
 module.exports = {
   pages,
   productionSourceMap: false,
-  {{#if_eq build "standalone"}}
-  runtimeCompiler: true,
-  {{/if_eq}}
   configureWebpack: {
     // We provide the app's title in Webpack's name field, so that
     // it can be accessed in index.html to inject the correct title.
@@ -40,7 +37,7 @@ module.exports = {
     },
   },
   chainWebpack: config => {
-    config.plugin('manifest').use(manifestPlugin, [
+    config.plugin('manifest').use(WebpackManifestPlugin, [
       {
         fileName: 'mf.json',
         // publicPath: config.build.assetsPublicPath

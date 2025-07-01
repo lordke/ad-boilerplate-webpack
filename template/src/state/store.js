@@ -1,21 +1,32 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
+import { defineStore } from 'pinia'
 
-import modules from './modules'
-
-Vue.use(Vuex)
-
-const store = new Vuex.Store({
-  modules,
-  strict: process.env.NODE_ENV !== 'production',
+// 主store示例
+export const useMainStore = defineStore('main', {
+  state: () => ({
+    count: 0,
+    user: null,
+  }),
+  
+  getters: {
+    doubleCount: (state) => state.count * 2,
+    isLoggedIn: (state) => !!state.user,
+  },
+  
+  actions: {
+    increment() {
+      this.count++
+    },
+    
+    setUser(user) {
+      this.user = user
+    },
+    
+    async init() {
+      // 初始化逻辑
+      console.log('Store initialized')
+    }
+  }
 })
 
-// Automatically run the `init` action for every module,
-// if one exists.
-for (const moduleName of Object.keys(modules)) {
-  if (modules[moduleName].actions && modules[moduleName].actions.init) {
-    store.dispatch(`${moduleName}/init`)
-  }
-}
-
-export default store
+// 导出其他store
+export * from './modules'
